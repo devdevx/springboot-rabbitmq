@@ -53,7 +53,6 @@ public class RmqConfig {
     RabbitProperties properties(RabbitProperties properties) {
         // amqp://USER:PASSWORD@HOST/VHOST
         String[] tokens = rabbitmqUrl.split("amqp://|:|@|/");
-        System.out.println(Arrays.asList(tokens));
         properties.setHost(tokens[3]);
         properties.setUsername(tokens[1]);
         properties.setPassword(tokens[2]);
