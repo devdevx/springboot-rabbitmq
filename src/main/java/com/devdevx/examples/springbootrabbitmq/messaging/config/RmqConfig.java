@@ -25,7 +25,7 @@ public class RmqConfig {
     @Value("${app.rabbitmq.key}")
     private String routingKey;
 
-    @Value("${app.rabbitmq.url}")
+    @Value("${app.rabbitmq.url:}")
     String rabbitmqUrl;
 
     @Bean
