@@ -1,15 +1,25 @@
-package com.devdevx.examples.springbootrabbitmq.messaging;
+package com.devdevx.examples.springbootrabbitmq.basic.messaging;
 
-public class Message {
+public class BasicMessage {
+    private Integer id;
     private String message;
     private Integer ms;
 
-    public Message() {
+    public BasicMessage() {
     }
 
-    public Message(String message, Integer ms) {
+    public BasicMessage(Integer id, String message, Integer ms) {
+        this.id = id;
         this.message = message;
         this.ms = ms;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getMessage() {
@@ -30,8 +40,9 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "message='" + message + '\'' +
+        return "BasicMessage{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
                 ", ms=" + ms +
                 '}';
     }

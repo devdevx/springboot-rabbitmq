@@ -1,4 +1,4 @@
-package com.devdevx.examples.springbootrabbitmq.messaging.config;
+package com.devdevx.examples.springbootrabbitmq.basic.config;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Component;
 
 @Profile("producer")
 @Component
-public class RmqProduConfig {
+public class BasicRmqProduConfig {
 
-    @Value("${app.rabbitmq.topic}")
-    private String topicExchangeName;
+    @Value("${app.rabbitmq.basic.exchange}")
+    private String exchangeName;
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, Jackson2JsonMessageConverter converter) {
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(converter);
-        rabbitTemplate.setExchange(topicExchangeName);
+        rabbitTemplate.setExchange(exchangeName);
         return rabbitTemplate;
     }
 

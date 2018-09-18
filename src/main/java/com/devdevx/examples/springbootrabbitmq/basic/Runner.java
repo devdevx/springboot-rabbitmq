@@ -1,5 +1,6 @@
-package com.devdevx.examples.springbootrabbitmq.messaging;
+package com.devdevx.examples.springbootrabbitmq.basic;
 
+import com.devdevx.examples.springbootrabbitmq.basic.messaging.BasicMessageSender;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Runner implements CommandLineRunner {
 
-    private final MessageSender messageSender;
+    private final BasicMessageSender messageSender;
 
-    public Runner(MessageSender messageSender) {
+    public Runner(BasicMessageSender messageSender) {
         this.messageSender = messageSender;
     }
 
