@@ -10,5 +10,12 @@ http://localhost:15672/
 
 Ready to run in heroku with the CloudAMQP add-on.
 
-TODO
+TODO end readme
+
 - End readme
+
+basic -> Default exchange
+broadcast -> Fanout exchange
+direct -> Direct exchange
+Topic exchange
+Headers exchange

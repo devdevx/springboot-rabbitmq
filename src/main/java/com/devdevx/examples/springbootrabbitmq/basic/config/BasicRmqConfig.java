@@ -7,10 +7,12 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ConditionalOnProperty(name = "app.rabbitmq.example", havingValue = "basic")
 public class BasicRmqConfig {
 
     private static final Logger log = LoggerFactory.getLogger(BasicRmqConfig.class);
@@ -20,9 +22,6 @@ public class BasicRmqConfig {
 
     @Value("${app.rabbitmq.basic.queue}")
     private String queueName;
-
-    @Value("${app.rabbitmq.basic.routing-key}")
-    private String routingKey;
 
     @Bean
     Queue queue() {
@@ -54,7 +53,7 @@ public class BasicRmqConfig {
     @Bean
     Binding binding(Queue queue, DirectExchange exchange) {
         log.info("Binding queue '{}' to the exchange '{}' with the routing key ''", queueName, exchangeName);
-        return BindingBuilder.bind(queue).to(exchange).with("*");
+        return BindingBuilder.bind(queue).to(exchange).with("");
     }
     */
 }

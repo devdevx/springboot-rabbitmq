@@ -1,4 +1,4 @@
-package com.devdevx.examples.springbootrabbitmq.basic.config;
+package com.devdevx.examples.springbootrabbitmq.direct.config;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Profile;
 
 @Profile("producer")
 @Configuration
-@ConditionalOnProperty(name = "app.rabbitmq.example", havingValue = "basic")
-public class BasicRmqProduConfig {
+@ConditionalOnProperty(name = "app.rabbitmq.example", havingValue = "direct")
+public class DirectRmqProduConfig {
 
-    @Value("${app.rabbitmq.basic.exchange}")
+    @Value("${app.rabbitmq.direct.exchange}")
     private String exchangeName;
 
     @Bean

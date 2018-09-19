@@ -1,4 +1,4 @@
-package com.devdevx.examples.springbootrabbitmq.basic.messaging;
+package com.devdevx.examples.springbootrabbitmq.direct.messaging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,17 +10,17 @@ import org.springframework.stereotype.Component;
 
 @Profile("consumer")
 @Component
-@ConditionalOnProperty(name = "app.rabbitmq.example", havingValue = "basic")
-public class BasicMessageReceiver {
+@ConditionalOnProperty(name = "app.rabbitmq.example", havingValue = "direct")
+public class DirectMessageReceiver {
 
-    private static final Logger log = LoggerFactory.getLogger(BasicMessageReceiver.class);
+    private static final Logger log = LoggerFactory.getLogger(DirectMessageReceiver.class);
 
-    @Value("${app.rabbitmq.basic.queue}")
+    @Value("${app.rabbitmq.direct.queue}")
     private String queueName;
 
-    @RabbitListener(queues = "${app.rabbitmq.basic.queue}")
-    public void receive(BasicMessage message) {
-        log.info("Basic message received on queue '{}' : {}", queueName, message);
+    @RabbitListener(queues = "${app.rabbitmq.direct.queue}")
+    public void receive(DirectMessage message) {
+        log.info("Direct message received on queue '{}' : {}", queueName, message);
         try {
             log.info("Sleeping {}ms", message.getMs());
             Thread.sleep(message.getMs());
