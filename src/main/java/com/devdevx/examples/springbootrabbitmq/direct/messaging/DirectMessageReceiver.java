@@ -20,12 +20,6 @@ public class DirectMessageReceiver {
 
     @RabbitListener(queues = "${app.rabbitmq.direct.queue}")
     public void receive(DirectMessage message) {
-        log.info("Direct message received on queue '{}' : {}", queueName, message);
-        try {
-            log.info("Sleeping {}ms", message.getMs());
-            Thread.sleep(message.getMs());
-        } catch (InterruptedException e) {
-            log.error("Sleeping error", e);
-        }
+        log.info("Message received on queue '{}' : {}", queueName, message);
     }
 }

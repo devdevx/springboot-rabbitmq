@@ -27,15 +27,15 @@ public class DirectRmqConfig {
     private String routingKey;
 
     @Bean
-    Queue queue() {
-        log.info("Creating queue: {}", queueName);
-        return new Queue(queueName, false);
-    }
-
-    @Bean
     DirectExchange exchange() {
         log.info("Creating exchange: {}", exchangeName);
         return new DirectExchange(exchangeName);
+    }
+
+    @Bean
+    Queue queue() {
+        log.info("Creating queue: {}", queueName);
+        return new Queue(queueName, false);
     }
 
     @Bean
