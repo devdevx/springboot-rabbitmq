@@ -26,34 +26,16 @@ public class BroadcastMessageReceiver {
 
     @RabbitListener(queues = "${app.rabbitmq.broadcast.queue-one}")
     public void receiveOne(BroadcastMessage message) {
-        log.info("Broadcast message received on queue '{}' : {}", queueNameOne, message);
-        try {
-            log.info("Sleeping {}ms", message.getMs());
-            Thread.sleep(message.getMs());
-        } catch (InterruptedException e) {
-            log.error("Sleeping error", e);
-        }
+        log.info("Message received on queue '{}' : {}", queueNameOne, message);
     }
 
     @RabbitListener(queues = "${app.rabbitmq.broadcast.queue-two}")
     public void receiveTwo(BroadcastMessage message) {
-        log.info("Broadcast message received on queue '{}' : {}", queueNameTwo, message);
-        try {
-            log.info("Sleeping {}ms", message.getMs());
-            Thread.sleep(message.getMs());
-        } catch (InterruptedException e) {
-            log.error("Sleeping error", e);
-        }
+        log.info("Message received on queue '{}' : {}", queueNameTwo, message);
     }
 
     @RabbitListener(queues = "${app.rabbitmq.broadcast.queue-three}")
     public void receiveThree(BroadcastMessage message) {
-        log.info("Broadcast message received on queue '{}' : {}", queueNameThree, message);
-        try {
-            log.info("Sleeping {}ms", message.getMs());
-            Thread.sleep(message.getMs());
-        } catch (InterruptedException e) {
-            log.error("Sleeping error", e);
-        }
+        log.info("Message received on queue '{}' : {}", queueNameThree, message);
     }
 }

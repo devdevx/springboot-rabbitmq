@@ -5,10 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Random;
 
 @Profile("producer")
 @Component
@@ -25,9 +25,10 @@ public class BroadcastMessageSender {
         this.rabbitTemplate = rabbitTemplate;
     }
 
+    @Scheduled(fixedDelayString = "${app.rabbitmq.delay-ms}")
     public void send() {
-        BroadcastMessage message = new BroadcastMessage(id++, LocalDateTime.now().toString(), new Random().nextInt(3) * 1000);
-        log.info("Sending broadcast message: {}", message);
+        BroadcastMessage message = new BroadcastMessage(id++, LocalDateTime.now().toString());
+        log.info("Sending message: {}", message);
         rabbitTemplate.convertAndSend(message);
     }
 }

@@ -31,6 +31,12 @@ public class BroadcastRmqConfig {
     private String queueNameThree;
 
     @Bean
+    FanoutExchange exchange() {
+        log.info("Creating exchange: {}", exchangeName);
+        return new FanoutExchange(exchangeName);
+    }
+
+    @Bean
     Queue queueOne() {
         log.info("Creating queue: {}", queueNameOne);
         return new Queue(queueNameOne, false);
@@ -46,12 +52,6 @@ public class BroadcastRmqConfig {
     Queue queueThree() {
         log.info("Creating queue: {}", queueNameThree);
         return new Queue(queueNameThree, false);
-    }
-
-    @Bean
-    FanoutExchange exchange() {
-        log.info("Creating exchange: {}", exchangeName);
-        return new FanoutExchange(exchangeName);
     }
 
     @Bean
