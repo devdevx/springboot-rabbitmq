@@ -20,12 +20,6 @@ public class BasicMessageReceiver {
 
     @RabbitListener(queues = "${app.rabbitmq.basic.queue}")
     public void receive(BasicMessage message) {
-        log.info("Basic message received on queue '{}' : {}", queueName, message);
-        try {
-            log.info("Sleeping {}ms", message.getMs());
-            Thread.sleep(message.getMs());
-        } catch (InterruptedException e) {
-            log.error("Sleeping error", e);
-        }
+        log.info("Message received on queue '{}' : {}", queueName, message);
     }
 }
