@@ -33,6 +33,10 @@ In this exchange the routing key is a list of words delimited by periods (.).
 
 The routing patters consists of exact words, asterisks (*) to match a word and hashtags (#) to match zero or more words.
 
+# Exception handling
+
+The default configuration for the unhandled exceptions is requeuing the message. We can change this in the properties (`spring.rabbitmq.listener.simple.default-requeue-rejected`). 
+
 # Running it
 
 ## Running locally
